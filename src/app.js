@@ -7,14 +7,49 @@ class App extends Component {
 
   config = {
     pages: [
-      'pages/index/index'
+      'pages/index/index',
+      'pages/topic/index',
+      'pages/log/index',
+      'pages/info/index'
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
-    }
+      navigationBarBackgroundColor: '#9C978B',
+      navigationBarTitleText: '干货集中营',
+      navigationBarTextStyle: 'white'
+    },
+    "tabBar": {
+      "backgroundColor": "#fafafa",
+      "borderStyle": "white",
+      "selectedColor": "#b4282d", //#b4282d
+      "color": "#666",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "iconPath": "static/images/ic_menu_choice_nor.png",
+          "selectedIconPath": "static/images/ic_menu_choice_pressed.png",
+          "text": "首页"
+        },
+        {
+          "pagePath": "pages/topic/index",
+          "iconPath": "static/images/ic_menu_topic_nor.png",
+          "selectedIconPath": "static/images/ic_menu_topic_pressed.png",
+          "text": "推荐"
+        },
+        {
+          "pagePath": "pages/log/index",
+          "iconPath": "static/images/ic_menu_sort_nor.png",
+          "selectedIconPath": "static/images/ic_menu_sort_pressed.png",
+          "text": "分类"
+        },
+        {
+          "pagePath": "pages/info/index",
+          "iconPath": "static/images/ic_menu_me_nor.png",
+          "selectedIconPath": "static/images/ic_menu_me_pressed.png",
+          "text": "我的"
+        }
+      ]
+    },
   }
 
   componentDidMount () {}
