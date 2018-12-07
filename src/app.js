@@ -10,7 +10,9 @@ class App extends Component {
       'pages/index/index',
       'pages/topic/index',
       'pages/log/index',
-      'pages/info/index'
+      'pages/info/index',
+      // info details
+      'pages/info/Components/details/index'
     ],
     window: {
       backgroundTextStyle: 'light',
