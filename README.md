@@ -1,6 +1,6 @@
-##### must read before use  
+##must read before use  :tiger:
 
-:tiger::tiger::tiger: This is a little exercise program
+This is a little exercise program
 
 **Special thanks to [Gank.io]** provided by the API
 
