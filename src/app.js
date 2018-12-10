@@ -12,7 +12,9 @@ class App extends Component {
       'pages/log/index',
       'pages/info/index',
       // info details
-      'pages/info/Components/details/index'
+      'pages/info/Components/details/index',
+      'pages/info/Components/collect/index',
+      'pages/info/Components/upload/index'
     ],
     window: {
       backgroundTextStyle: 'light',

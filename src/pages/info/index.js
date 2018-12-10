@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image, Button } from '@tarojs/components'
+import List from './Components/list'
 import './style.less'
 
 export default class Info extends Component {
@@ -57,6 +58,12 @@ export default class Info extends Component {
     })
   };
 
+  handleClick = (value) => {
+    Taro.navigateTo({
+      url: `/pages/info/Components/${value}/index`
+    })
+  };
+
   render () {
     const { userInfo } = this.state;
     return (
@@ -73,6 +80,20 @@ export default class Info extends Component {
             <Text className='nickname'>{userInfo.nickName}</Text>
             <Text className='edit' onClick={this.handleEdit}>查看或编辑个人主页</Text>
           </View>
+        </View>
+
+        {/* list */}
+        <View className='item-list'>
+          {List.map((d, i) =>
+            <View className='warp-flex' key={i} onClick={this.handleClick.bind(this, d.hash)}>
+              <View className='item-icon'>
+                <Image class='item-img' src={d.img} />
+              </View>
+              <View className='item-name'>
+                <Text>{d.name}</Text>
+              </View>
+            </View>
+          )}
         </View>
       </View>
     )
