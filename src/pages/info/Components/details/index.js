@@ -26,11 +26,11 @@ export default class Details extends Component {
         userInfo : JSON.parse(userInfo)
       },() => {
         Taro.request({
-          url: `http://fanyi.youdao.com/translate?&doctype=json&type=AUTO&i=${this.state.userInfo.country}`
+          url: `http://translate.google.cn/translate_a/single?client=gtx&dt=t&dj=1&ie=UTF-8&sl=auto&tl=zh_CN&q=${this.state.userInfo.country}`
         }).then(res => {
           const {data} = res;
           this.setState({
-            countries: data.translateResult[0][0].tgt
+            countries: data.sentences[0].trans
           })
         }).catch(err => {
           console.log(err);

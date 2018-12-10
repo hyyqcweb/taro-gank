@@ -1,0 +1,30 @@
+import Taro, { Component } from '@tarojs/taro'
+// 引入 Form 组件
+import { View, Form, Switch, Button, Input } from '@tarojs/components'
+
+export default class Upload extends Component {
+  config = {
+    navigationBarTitleText: '提交干货'
+  }
+
+  formSubmit = e => {
+    console.log(e)
+  }
+
+  formReset = e => {
+    console.log(e)
+  }
+
+  render () {
+    return (
+      <Form onSubmit={this.formSubmit} onReset={this.formReset} >
+        <View className='example-body'>
+          <Switch name='switch' className='form-switch' />
+        </View>
+        <Input type='text' placeholder='请输入描述信息...' name='des' />
+        <Button className='submit' type='primary' formType='submit'>提交干货</Button>
+        <Button className='submit' type='primary' formType='reset'>重置</Button>
+      </Form>
+    )
+  }
+}

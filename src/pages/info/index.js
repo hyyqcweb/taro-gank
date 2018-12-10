@@ -59,8 +59,9 @@ export default class Info extends Component {
   };
 
   handleClick = (value) => {
+    let {userInfo} = this.state;
     Taro.navigateTo({
-      url: `/pages/info/Components/${value}/index`
+      url: `/pages/info/Components/${value}/index?userInfo=${JSON.stringify(userInfo)}`
     })
   };
 
