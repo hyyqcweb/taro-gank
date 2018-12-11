@@ -30,10 +30,27 @@ export default class ImageView extends Component {
 
   componentDidHide () { }
 
+  handleLongPress = (url) => {
+    Taro.downloadFile({
+      url
+    }).then(res => {
+      console.log(res);
+      let path = res.tempFilePath;
+      Taro.saveImageToPhotosAlbum({
+        filePath: path
+      }).then(r => {
+        console.log(r);
+        Taro.showToast({
+          title: '保存成功!'
+        })
+      })
+    })
+  };
+
   render () {
     const { url } = this.state;
     return (
-      <View className='imageView'>
+      <View className='imageView' onLongPress={this.handleLongPress.bind(this, url)}>
         <Image src={url} />
       </View>
     )

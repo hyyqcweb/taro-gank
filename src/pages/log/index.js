@@ -61,7 +61,6 @@ export default class Log extends Component {
     }
     const { dataGroup } = this.state;
     if(dataGroup.length) {
-      console.log(dataGroup.length);
       this.setState({
         dataGroup: dataGroup.concat(data),
         loading: false
@@ -95,7 +94,6 @@ export default class Log extends Component {
 
   render () {
     const { dataGroup, loading } = this.state;
-    console.log('dataGroup', dataGroup);
     return (
       <View className='log'>
         <ScrollView scrollY style='height:1000px;' onScrollToLower={this.onScrollToLower.bind(this)} lowerThreshold='20' enableBackToTop>
