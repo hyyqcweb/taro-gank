@@ -1,7 +1,8 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image } from '@tarojs/components'
+import { View, Text, Image, ScrollView } from '@tarojs/components'
 import './style.less'
 
+let page = 1;
 export default class Log extends Component {
 
   config = {
@@ -11,8 +12,9 @@ export default class Log extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      page: 1,
-      dataGroup: []
+      // page: 1,
+      dataGroup: [],
+      loading: true
     }
   }
 
@@ -23,7 +25,8 @@ export default class Log extends Component {
   }
 
   getData = () => {
-    let { page } = this.state;
+    // let { page } = this.state;
+    Taro.showLoading({ title: '加载中' });
     Taro.request({
       url: `http://gank.io/api/data/福利/10/${page}`,
       header: {
@@ -31,6 +34,7 @@ export default class Log extends Component {
       }
     }).then(res => {
       const {data} = res;
+      Taro.hideLoading();
       if(!data.error) {
         this.convertData(data.results);
       }
@@ -40,25 +44,35 @@ export default class Log extends Component {
   };
 
   convertData = (item) => {
-    let dataGroup = [];
+    let data = [];
     let group = [];
-    item.map(girlInfo => {
-      girlInfo.url = girlInfo.url.replace('http://ww', 'http://ws');
+    item.map(d => {
+      d.url = d.url.replace('http://ww', 'http://ws');
       if (group.length === 2)  {
-        dataGroup.push(group);
-        group = [girlInfo]
+        data.push(group);
+        group = [d]
       } else {
-        group.push(girlInfo)
+        group.push(d)
       }
     });
 
     if (group.length > 0) {
-      dataGroup.push(group)
+      data.push(group)
     }
-    this.setState({
-      dataGroup
-    });
-    return dataGroup
+    const { dataGroup } = this.state;
+    if(dataGroup.length) {
+      console.log(dataGroup.length);
+      this.setState({
+        dataGroup: dataGroup.concat(data),
+        loading: false
+      });
+    }else {
+      this.setState({
+        dataGroup: data,
+        loading: false
+      });
+    }
+    return data
   };
 
   componentWillUnmount () { }
@@ -73,28 +87,41 @@ export default class Log extends Component {
     })
   };
 
+  onScrollToLower = () => {
+    console.log('滚动到底部了');
+    page++;
+    this.getData();
+  };
+
   render () {
-    const { dataGroup } = this.state;
+    const { dataGroup, loading } = this.state;
+    console.log('dataGroup', dataGroup);
     return (
       <View className='log'>
-        {dataGroup.map((d, i) => (
-          <View className='item-container' key={i}>
-            <View className='item' onClick={this.handleClick.bind(this, d[0].url)}>
-              <Image src={d[0].url} />
-              <View className='bottom'>
-                <Text className='fl'>{d[0].desc}</Text>
-                <Text className='fr'>via: {d[0].who}</Text>
+        <ScrollView scrollY style='height:1000px;' onScrollToLower={this.onScrollToLower.bind(this)} lowerThreshold='20' enableBackToTop>
+          {!loading && dataGroup.map((d, i) => (
+            <View className='item-container' key={i}>
+              <View className='item' onClick={this.handleClick.bind(this, d[0].url)}>
+                <Image src={d[0].url}  />
+                <View className='bottom'>
+                  <Text className='fl'>{d[0].desc}</Text>
+                  <Text className='fr'>via: {d[0].who}</Text>
+                </View>
+              </View>
+              <View className='item'>
+                <Image src={d.length > 1 && d[1].url} onClick={this.handleClick.bind(this, d[1].url)} />
+                <View className='bottom'>
+                  <Text className='fl'>{d.length > 1 && d[1].desc}</Text>
+                  <Text className='fr'>{d.length > 1 && <Text>via: {d[1].who}</Text>}</Text>
+                </View>
               </View>
             </View>
-            <View className='item'>
-              <Image src={d.length > 1 && d[1].url} onClick={this.handleClick.bind(this, d[1].url)} />
-              <View className='bottom'>
-                <Text className='fl'>{d.length > 1 && d[1].desc}</Text>
-                <Text className='fr'>{d.length > 1 && <Text>via: {d[1].who}</Text>}</Text>
-              </View>
-            </View>
-          </View>
           ))}
+          <View className='load-more-container'>
+            {/*<icon color='#999999' size='18' type='waiting_circle' />*/}
+            <Text className='load-more-tips'>加载更多数据...</Text>
+          </View>
+        </ScrollView>
       </View>
     )
   }
