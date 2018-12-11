@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Input, Picker, Button, Form } from '@tarojs/components'
 import './style.less'
+import onJudge from './Judge'
 
 export default class Upload extends Component {
 
@@ -60,33 +61,31 @@ export default class Upload extends Component {
       this.show('url 地址必填');
       return false;
     }else {
-      switch (type) {
-        case type === "" || type === "0":
-          type = 'Android';
-          break;
-        case type === "1":
-          type = 'iOS';
-          break;
-        case type === "2":
-          type = '休息视频';
-          break;
-        case type === "3":
-          type = '福利';
-          break;
-        case type === "4":
-          type = '拓展资源';
-          break;
-        case type === "5":
-          type = '前端';
-          break;
-        case type === "6":
-          type = '瞎推荐';
-          break;
-        case type === "7":
-          type = 'App';
-          break;
-      }
-      console.log(desc, who, url, type);
+      Taro.request({
+        url: 'https://gank.io/api/add2gank',
+        method: 'POST',
+        data: {"desc":desc,"who":who, "url":url, "type":onJudge(type), "debug": true},
+        header: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }).then(res => {
+        const {data} = res;
+        Taro.showModal({
+          title: '提示',
+          content: data.msg,
+        }).then(response => {
+          if(response.confirm) {
+            if(!data.error) {
+              Taro.switchTab({
+                url: '/pages/info/index'
+              });
+            }
+          }
+        });
+
+      }).catch(err => {
+        console.log(err);
+      })
     }
   };
 
