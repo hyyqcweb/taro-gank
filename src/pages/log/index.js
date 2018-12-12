@@ -12,7 +12,6 @@ export default class Log extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // page: 1,
       dataGroup: [],
       loading: true
     }
@@ -25,7 +24,6 @@ export default class Log extends Component {
   }
 
   getData = () => {
-    // let { page } = this.state;
     Taro.showLoading({ title: '加载中' });
     Taro.request({
       url: `http://gank.io/api/data/福利/10/${page}`,
@@ -116,7 +114,6 @@ export default class Log extends Component {
             </View>
           ))}
           <View className='load-more-container'>
-            {/*<icon color='#999999' size='18' type='waiting_circle' />*/}
             <Text className='load-more-tips'>加载更多数据...</Text>
           </View>
         </ScrollView>
