@@ -41,7 +41,7 @@ export default class ImageView extends Component {
       }).then(r => {
         console.log(r);
         Taro.showToast({
-          title: '保存成功!'
+          title: '已保存到系统相册'
         })
       })
     })
@@ -51,7 +51,7 @@ export default class ImageView extends Component {
     const { url } = this.state;
     return (
       <View className='imageView' onLongPress={this.handleLongPress.bind(this, url)}>
-        <Image src={url} />
+        <Image src={url} mode='widthFix' />
       </View>
     )
   }
