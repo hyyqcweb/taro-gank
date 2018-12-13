@@ -13,7 +13,9 @@ export default class Log extends Component {
     super(props);
     this.state = {
       dataGroup: [],
-      loading: true
+      loading: true,
+      navTab: ['妹子', '视频', '热门'],
+      currentIndex: 0,
     }
   }
 
@@ -90,33 +92,57 @@ export default class Log extends Component {
     this.getData();
   };
 
+  onClick(index) {
+    this.setState({
+      currentIndex: index
+    })
+  }
+
   render () {
-    const { dataGroup, loading } = this.state;
+    const { dataGroup, loading, navTab, currentIndex } = this.state;
     return (
       <View className='log'>
-        <ScrollView scrollY style='height:1000px;' onScrollToLower={this.onScrollToLower.bind(this)} lowerThreshold='20' enableBackToTop>
-          {!loading && dataGroup.map((d, i) => (
-            <View className='item-container' key={i}>
-              <View className='item' onClick={this.handleClick.bind(this, d[0].url)}>
-                <Image src={d[0].url}  />
-                <View className='bottom'>
-                  <Text className='fl'>{d[0].desc}</Text>
-                  <Text className='fr'>via: {d[0].who}</Text>
-                </View>
-              </View>
-              <View className='item'>
-                <Image src={d.length > 1 && d[1].url} onClick={this.handleClick.bind(this, d[1].url)} />
-                <View className='bottom'>
-                  <Text className='fl'>{d.length > 1 && d[1].desc}</Text>
-                  <Text className='fr'>{d.length > 1 && <Text>via: {d[1].who}</Text>}</Text>
-                </View>
-              </View>
+        <View className='title'>
+          {navTab.map((d, i) =>
+            <View className={currentIndex === i ? 'flex-item active' : 'flex-item'} key={i} onClick={this.onClick.bind(this, i)}>
+              {d}
             </View>
-          ))}
-          <View className='load-more-container'>
-            <Text className='load-more-tips'>加载更多数据...</Text>
+          )}
+        </View>
+        <View className='content'>
+          <View className='sister' hidden={currentIndex !== 0}>
+            <ScrollView scrollY style='height:1000px;' onScrollToLower={this.onScrollToLower.bind(this)} lowerThreshold='20' enableBackToTop>
+              {!loading && dataGroup.map((d, i) => (
+                <View className='item-container' key={i}>
+                  <View className='item' onClick={this.handleClick.bind(this, d[0].url)}>
+                    <Image src={d[0].url}  />
+                    <View className='bottom'>
+                      <Text className='fl'>{d[0].desc}</Text>
+                      <Text className='fr'>via: {d[0].who}</Text>
+                    </View>
+                  </View>
+                  <View className='item'>
+                    <Image src={d.length > 1 && d[1].url} onClick={this.handleClick.bind(this, d[1].url)} />
+                    <View className='bottom'>
+                      <Text className='fl'>{d.length > 1 && d[1].desc}</Text>
+                      <Text className='fr'>{d.length > 1 && <Text>via: {d[1].who}</Text>}</Text>
+                    </View>
+                  </View>
+                </View>
+              ))}
+              <View className='load-more-container'>
+                <Text className='load-more-tips'>加载更多数据...</Text>
+              </View>
+            </ScrollView>
           </View>
-        </ScrollView>
+          <View className='rest' hidden={currentIndex !== 1}>
+            2
+          </View>
+          <View className='hot' hidden={currentIndex !== 2}>
+            3
+          </View>
+        </View>
+
       </View>
     )
   }
