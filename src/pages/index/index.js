@@ -14,6 +14,7 @@ export default class Index extends Component {
       loading: true,
       navTab: [],
       currentIndex: 0,
+      leftNumber: 0
     }
   }
 
@@ -61,8 +62,20 @@ export default class Index extends Component {
     console.log(e)
   };
 
+  handleChange = (e) => {
+    console.log(e);
+    this.setState({
+      leftNumber: e.detail.current * 75
+    });
+
+    this.setState({
+      currentIndex: e.detail.current
+    })
+  };
+
   render() {
-    const { navTab, currentIndex } = this.state;
+    const { navTab, currentIndex, leftNumber } = this.state;
+    console.log(leftNumber);
     return (
       <View className='index'>
         <ScrollView
@@ -70,6 +83,7 @@ export default class Index extends Component {
           scrollWithAnimation
           onScrollToUpper={this.handleLeft}
           onScrollToLower={this.handleRight}
+          scrollLeft={leftNumber}
         >
           <View className='title'>
             {navTab.map((d, i) =>
@@ -84,17 +98,16 @@ export default class Index extends Component {
           vertical={false}
           circular
           indicatorDots={false}
+          current={currentIndex}
+          onChange={this.handleChange.bind(this)}
         >
-
-          <SwiperItem>
-            <View className='demo-text-1'>1</View>
-          </SwiperItem>
-          <SwiperItem>
-            <View className='demo-text-2'>2</View>
-          </SwiperItem>
-          <SwiperItem>
-            <View className='demo-text-3'>3</View>
-          </SwiperItem>
+          {
+            navTab.map((d, i) => (
+              <SwiperItem key={i}>
+                <View className={'demo-text-' + i}>{i}</View>
+              </SwiperItem>
+            ))
+          }
         </Swiper>
       </View>
     )
