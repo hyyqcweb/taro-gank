@@ -1,5 +1,5 @@
 import Taro, {Component} from '@tarojs/taro'
-import {View, Text, ScrollView} from '@tarojs/components'
+import {View, Swiper, SwiperItem, ScrollView} from '@tarojs/components'
 import './index.less'
 
 export default class Index extends Component {
@@ -79,6 +79,23 @@ export default class Index extends Component {
             )}
           </View>
         </ScrollView>
+        <Swiper
+          className='content'
+          vertical={false}
+          circular
+          indicatorDots={false}
+        >
+
+          <SwiperItem>
+            <View className='demo-text-1'>1</View>
+          </SwiperItem>
+          <SwiperItem>
+            <View className='demo-text-2'>2</View>
+          </SwiperItem>
+          <SwiperItem>
+            <View className='demo-text-3'>3</View>
+          </SwiperItem>
+        </Swiper>
       </View>
     )
   }
