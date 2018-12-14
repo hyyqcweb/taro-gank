@@ -63,7 +63,6 @@ export default class Index extends Component {
   };
 
   handleChange = (e) => {
-    console.log(e);
     this.setState({
       leftNumber: e.detail.current * 75
     });
@@ -75,7 +74,6 @@ export default class Index extends Component {
 
   render() {
     const { navTab, currentIndex, leftNumber } = this.state;
-    console.log(leftNumber);
     return (
       <View className='index'>
         <ScrollView
@@ -83,6 +81,8 @@ export default class Index extends Component {
           scrollWithAnimation
           onScrollToUpper={this.handleLeft}
           onScrollToLower={this.handleRight}
+          lowerThreshold='20'
+          upperThreshold='20'
           scrollLeft={leftNumber}
         >
           <View className='title'>
@@ -103,7 +103,7 @@ export default class Index extends Component {
         >
           {
             navTab.map((d, i) => (
-              <SwiperItem key={i}>
+              <SwiperItem key={i} className='nav-item'>
                 <View className={'demo-text-' + i}>{i}</View>
               </SwiperItem>
             ))
