@@ -14,12 +14,12 @@ export default class Index extends Component {
       loading: true,
       navTab: [],
       currentIndex: 0,
-      leftNumber: 0
+      leftNumber: 0,
     }
   }
 
   componentDidMount() {
-    this.getRestData()
+    this.getRestData();
   }
 
   getRestData() {
@@ -45,7 +45,7 @@ export default class Index extends Component {
     });
     this.setState({
       navTab: array
-    })
+    });
   }
 
   onClick = (id, index) => {
@@ -74,6 +74,7 @@ export default class Index extends Component {
 
   render() {
     const { navTab, currentIndex, leftNumber } = this.state;
+
     return (
       <View className='index'>
         <ScrollView
@@ -105,24 +106,7 @@ export default class Index extends Component {
             navTab.map((d, i) => (
               <SwiperItem key={i} className='nav-item'>
                 <View className={'demo-text-' + i}>
-                  <View className='item-list'>
-                    <View className='item-video'>
-                      <Video
-                        src='http://baobab.kaiyanapp.com/api/v1/playUrl?vid=142069&resourceType=video&editionType=default&source=aliyun'
-                        controls
-                        autoplay={false}
-                        loop={false}
-                        initialTime='30'
-                        id='video'
-                      />
-                    </View>
-                    <View className='item-bottom'>
-                        <View className='caption'>日本动画温情广告：妈妈的味道</View>
-                        <View  className='kyt-divider kyt-divider-short' />
-                        <View className='abstract'>广告 xxx </View>
-                        <View className='description'>妈妈是这个世界上最辛苦的工作，全年无休。多年之后，你也能像妈妈这样优秀吗？</View>
-                    </View>
-                  </View>
+                  {i}
                 </View>
               </SwiperItem>
             ))
