@@ -1,6 +1,7 @@
 page {
   width: 100%;
-  height: 100%;
+  height:100vh;
+  overflow-y:hidden;
 }
 
 .title {
@@ -35,11 +36,56 @@ scroll-view {
 swiper {
   width: 100%;
   margin-top: 100px;
-  height: 100vh;
+  height: calc(100vh - 100px);
 }
 .content {
+  width: 100%;
+  height: calc(100vh - 100px);
   .nav-item {
+    width: 100%;
     background: #fff;
+    height: calc(100vh - 100px);
+    .item-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .item-video {
+          width: 100%;
+          height: 250px;
+          margin-top: 5px;
+          video {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .item-bottom {
+          background: rgba(0,0,0,.2);
+          padding: 15px 15px 4px 15px;
+          width: 100%;
+          color:#fff;
+          .caption {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 7px;
+          }
+          .kyt-divider, .kyt-divider-short {
+            margin-bottom: 7px;
+            background: #fff;
+            height: 1px;
+            width: 40px;
+          }
+          .abstract {
+            font-size: 16px;
+            margin-bottom: 12px;
+          }
+          .description {
+            font-size: 20px;
+            margin-bottom: 11px;
+            opacity: 0.85;
+          }
+        }
+    }
   }
 }
 

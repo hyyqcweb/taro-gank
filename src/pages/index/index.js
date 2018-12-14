@@ -1,5 +1,5 @@
 import Taro, {Component} from '@tarojs/taro'
-import {View, Swiper, SwiperItem, ScrollView} from '@tarojs/components'
+import {View, Swiper, SwiperItem, ScrollView, Video, Text} from '@tarojs/components'
 import './index.less'
 
 export default class Index extends Component {
@@ -104,7 +104,26 @@ export default class Index extends Component {
           {
             navTab.map((d, i) => (
               <SwiperItem key={i} className='nav-item'>
-                <View className={'demo-text-' + i}>{i}</View>
+                <View className={'demo-text-' + i}>
+                  <View className='item-list'>
+                    <View className='item-video'>
+                      <Video
+                        src='http://baobab.kaiyanapp.com/api/v1/playUrl?vid=142069&resourceType=video&editionType=default&source=aliyun'
+                        controls
+                        autoplay={false}
+                        loop={false}
+                        initialTime='30'
+                        id='video'
+                      />
+                    </View>
+                    <View className='item-bottom'>
+                        <View className='caption'>日本动画温情广告：妈妈的味道</View>
+                        <View  className='kyt-divider kyt-divider-short' />
+                        <View className='abstract'>广告 xxx </View>
+                        <View className='description'>妈妈是这个世界上最辛苦的工作，全年无休。多年之后，你也能像妈妈这样优秀吗？</View>
+                    </View>
+                  </View>
+                </View>
               </SwiperItem>
             ))
           }
