@@ -15,7 +15,8 @@ export default class Location extends Component {
     this.state = {
       oldLocaltion: '',
       location: '',
-      qqMapSdk: qqMapSdk
+      qqMapSdk: qqMapSdk,
+      weather: {}
     };
   }
 
@@ -35,6 +36,7 @@ export default class Location extends Component {
               location: response.result.address,
               oldLocaltion: response.result.location
             });
+            _that.getWeather(response.result.address);
           },
           fail: function (err) {
             console.log(err);
@@ -44,6 +46,19 @@ export default class Location extends Component {
       console.log(error);
     });
   }
+
+  getWeather = (value) => {
+    Taro.request({
+      url: `https://api.seniverse.com/v3/weather/now.json?key=frml54jabcv13hpy&location=${value.substring(3,5)}&language=zh-Hans&unit=c`
+    }).then(res => {
+      const { data } = res;
+      this.setState({
+        weather: data.results[0].now
+      })
+    }).catch(err => {
+      console.log(err);
+    })
+  };
 
   componentWillUnmount () { }
 
@@ -56,7 +71,7 @@ export default class Location extends Component {
   };
 
   render () {
-    const {location, oldLocaltion} = this.state;
+    const {location, oldLocaltion, weather} = this.state;
     return (
       <View className='content'>
         <View className='title'>
@@ -68,7 +83,18 @@ export default class Location extends Component {
           </Text>
         </View>
         <View className='location-map'>
-          <Map onClick={this.onTap} longitude={oldLocaltion.lng} latitude={oldLocaltion.lat} showLocation	 />
+          <Map onClick={this.onTap} longitude={oldLocaltion.lng} latitude={oldLocaltion.lat} showLocation	/>
+        </View>
+        <View className='weather'>
+          <View className='header'>今日天气</View>
+          <View className='box'>
+            <Text>
+              天气: {weather.text}
+            </Text>
+            <Text>
+              气温: {weather.temperature}°
+            </Text>
+          </View>
         </View>
       </View>
     )

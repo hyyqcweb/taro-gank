@@ -54,6 +54,7 @@ const config = {
   },
   copy: {
      patterns: [
+
     ],
     options: {
     }

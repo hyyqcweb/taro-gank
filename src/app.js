@@ -56,7 +56,7 @@ class App extends Component {
           "text": "我的"
         }
       ]
-    },
+    }
   }
 
   componentDidMount () {}
