@@ -17,6 +17,7 @@ class App extends Component {
       'pages/info/Components/upload/index',
       'pages/info/Components/location/index',
       'pages/info/Components/scan/index',
+      'pages/info/Components/setting/index',
       // log details
       'pages/log/Components/view/index'
     ],
