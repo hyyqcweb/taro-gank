@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image, Button, Map } from '@tarojs/components'
+import { View, Text, Image, Button } from '@tarojs/components'
 import List from './Components/list'
 import './style.less'
 
@@ -65,10 +65,6 @@ export default class Info extends Component {
     })
   };
 
-  onTap = (e) => {
-    console.log(e)
-  };
-
   render () {
     const { userInfo } = this.state;
     return (
@@ -101,7 +97,7 @@ export default class Info extends Component {
             )}
           </View>
           {/*weather*/}
-          <Map onClick={this.onTap} scale='5' />
+
         </View>
     )
   }
