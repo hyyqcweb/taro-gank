@@ -3,6 +3,7 @@ import { View, Text, Map } from '@tarojs/components'
 import './style.less'
 import { AtCard, AtAccordion, AtList, AtListItem  } from "taro-ui"
 import QQMapWX from '../../../../utils/qqmap-wx-jssdk'
+import WTL from '../../../../static/wtl.png'
 
 export default class Location extends Component {
 
@@ -97,7 +98,7 @@ export default class Location extends Component {
             note={`温馨提示: ${weather.ganmao}`}
             extra={`${weather.forecast.length && weather.forecast[0].type} ${weather.wendu}°`}
             title={`${weather.city.substring(0, 2)} 天气`}
-            thumb='http://www.logoquan.com/upload/list/20171008/logoquan15081601617.PNG'
+            thumb={WTL}
             isFull
           >
             {weather.forecast.map((d, i) => {
