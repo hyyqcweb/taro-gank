@@ -133,29 +133,3 @@ export default class Location extends Component {
   }
 }
 
-{/*{JSON.stringify(weather) !== "{}" &&*/}
-{/*<View className='weather'>*/}
-{/*<View className='header'>{weather.city.substring(0, 2)} 天气</View>*/}
-{/*<View className='box'>*/}
-{/*<Text>*/}
-{/*最低气温: {weather.forecast.length && weather.forecast[0].low}*/}
-{/*</Text>*/}
-{/*<Text>*/}
-{/*实时气温: {weather.wendu}°*/}
-{/*</Text>*/}
-{/*<Text>*/}
-{/*最低气温: {weather.forecast.length && weather.forecast[0].high}*/}
-{/*</Text>*/}
-{/*<Text>*/}
-{/*风向: {weather.forecast.length && weather.forecast[0].fengxiang}*/}
-{/*</Text>*/}
-{/*<Text>*/}
-{/*风力: {weather.forecast.length && weather.forecast[0].fengli}*/}
-{/*</Text>*/}
-{/*<Text>*/}
-{/*温馨提示: {weather.ganmao}*/}
-{/*</Text>*/}
-{/*</View>*/}
-{/*</View>*/}
-{/*}*/}
-
