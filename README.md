@@ -19,6 +19,11 @@ This is a little exercise program
   yarn dev:weapp || npm run dev:weapp  // only the small program was tested
 ```
 
+## 🔥 Contact
+```bash
+  junjie_hyyqc@163.com // please indicate your intention
+```
+
 ## 🌍 License
 
 ```MIT```
