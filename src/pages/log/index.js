@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image, ScrollView } from '@tarojs/components'
 import './style.less'
+import Rvideo from './Video'
 
 let page = 1;
 export default class Log extends Component {
@@ -136,7 +137,7 @@ export default class Log extends Component {
             </ScrollView>
           </View>
           <View className='rest' hidden={currentIndex !== 1}>
-            2
+            <Rvideo currentIndex={currentIndex} />
           </View>
           <View className='hot' hidden={currentIndex !== 2}>
             3

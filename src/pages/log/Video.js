@@ -2,7 +2,6 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Video } from '@tarojs/components'
 import './rest.less'
 
-let page = 1;
 export default class Rest extends Component {
 
   constructor(props) {
@@ -14,20 +13,25 @@ export default class Rest extends Component {
   }
 
   componentDidMount () {
-    this.getRestData()
+    if(this.props.currentIndex === 0 || this.props.currentIndex === 1 || this.props.currentIndex === 2) {
+      this.getRestData()
+    }
   }
 
   getRestData() {
     Taro.showLoading({ title: '加载中' });
     Taro.request({
-      url: `https://api.apiopen.top/videoCategory`,
+      url: 'https://api.apiopen.top/todayVideo',
       header: {
         'Content-Type': 'application/json'
       }
     }).then(res => {
       Taro.hideLoading();
       const { data } = res;
-      console.log(data.result);
+      this.setState({
+        List: data.result,
+        loading: false
+      })
     }).catch(err => {
       console.log(err);
     })
@@ -39,25 +43,31 @@ export default class Rest extends Component {
   };
 
   render () {
-    const { List } = this.state;
+    const { List, loading } = this.state;
     return (
       <View className='rest'>
-        {List.map((d, i) =>
-          <View className='item-box' key={i} onClick={this.handleClick.bind(this, i)}>
-            <View className='title'>
-              <Video
-                src={d.url}
-                autoplay={false}
-                controls
-                initialTime='0'
-                id='video'
-                loop={false}
-                muted={false}
-              />
-              <Text className='abstract'>{d.desc}</Text>
-            </View>
-          </View>
-        )}
+        {
+          !loading && List.map((d, i) =>
+            d.data.content !== undefined &&
+              <View className='item-box' key={i} onClick={this.handleClick.bind(this, i)}>
+                <View className='title'>
+                  <Video
+                    src={d.data.content.data.playUrl}
+                    autoplay={false}
+                    controls
+                    initialTime='0'
+                    id='video'
+                    loop={false}
+                    muted={false}
+                  />
+                  <View className='bottom'>
+                    <Text className='abstract'>简介: {d.data.content.data.title}</Text>
+                    <Text className='category'>类型: {d.data.content.data.category}</Text>
+                  </View>
+                </View>
+              </View>
+          )
+        }
       </View>
     )
   }
