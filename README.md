@@ -16,7 +16,7 @@ This is a little exercise program
 
 ## 🔨 Preview 
 ```bash
-  yarn dev:weapp || npm run dev:weapp  only the small program was tested
+  yarn dev:weapp || npm run dev:weapp  // only the small program was tested
 ```
 
 ## 🌍 License
