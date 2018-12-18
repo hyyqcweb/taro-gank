@@ -84,7 +84,9 @@ export default class Topic extends Component {
 
   // open detail
   handleDetail = (item) => {
-    console.log(item);
+    Taro.navigateTo({
+      url: `/pages/detail/index?item=${JSON.stringify(item)}`
+    })
   };
 
   render () {
