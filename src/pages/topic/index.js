@@ -1,5 +1,6 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Picker, Button, Image, ScrollView } from '@tarojs/components'
+import { AtSwipeAction, AtMessage } from "taro-ui"
 import './style.less'
 
 export default class Topic extends Component {
@@ -15,12 +16,28 @@ export default class Topic extends Component {
       selectorChecked: '',
       loading: true,
       item: {},
-      category: []
+      category: [],
+      storageArray: []
     }
   }
 
   componentDidMount () {
-    this.getHistory()
+    this.getHistory();
+
+    // save array
+    Taro.getStorage({key: 'collect'}).then(res => {
+      if(res.data.length) {
+        this.setState({
+          storageArray: JSON.parse(res.data)
+        })
+      }else {
+        this.setState({
+          storageArray: res.data
+        })
+      }
+    }).catch(err => {
+      console.log('err', err);
+    });
   }
 
   // get history data
@@ -89,12 +106,34 @@ export default class Topic extends Component {
     })
   };
 
+  // open or close button
+  onCollection = (item) => {
+    const { storageArray } = this.state;
+    Taro.atMessage({
+      'message': '收藏成功',
+      'type': 'success',
+    });
+
+    // management data
+    if(storageArray.length === 0) {
+      storageArray.push(item);
+    }else {
+      for(let i in storageArray) {
+        if(storageArray[i]._id === item._id) {
+          return null
+        }else {
+          storageArray.push(item)
+        }
+      }
+    }
+    Taro.setStorageSync('collect', JSON.stringify(storageArray));
+  };
+
   render () {
     const { dataList, selectorChecked, item, loading, category } = this.state;
-    console.log(item);
-    console.log(category);
     return (
       <View className='container'>
+        <AtMessage />
         {!loading && JSON.stringify(item) !== "{}" &&
         <ScrollView
           scrollY
@@ -126,8 +165,18 @@ export default class Topic extends Component {
                   </View>
                   <View className='section-content'>
                     {item[d].map(v =>
-                      <View className='section-list' key={v._id} onClick={this.handleDetail.bind(this, v)}>
-                          {v.desc}
+                      <View className='section-list' key={v._id}>
+                        <AtSwipeAction onClick={this.onCollection.bind(this, v)} autoClose options={[
+                          {
+                            text: '收藏',
+                            style: {
+                              backgroundColor: '#FF4949'
+                            }
+                          }
+                        ]}
+                        >
+                          <Text onClick={this.handleDetail.bind(this, v)}>{v.desc}</Text>
+                        </AtSwipeAction>
                       </View>
                     )}
                   </View>
