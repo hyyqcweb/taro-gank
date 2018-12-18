@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Picker, Button, Image } from '@tarojs/components'
+import { View, Text, Picker, Button, Image, ScrollView } from '@tarojs/components'
 import './style.less'
 
 export default class Topic extends Component {
@@ -14,11 +14,10 @@ export default class Topic extends Component {
       dataList: [],
       selectorChecked: '',
       loading: true,
-      item: {}
+      item: {},
+      category: []
     }
   }
-
-  componentWillMount () { }
 
   componentDidMount () {
     this.getHistory()
@@ -57,13 +56,15 @@ export default class Topic extends Component {
       Taro.hideLoading();
       this.setState({
         item: data.results,
-        loading: false
+        loading: false,
+        category: data.category
       })
     }).catch(err => {
       console.log(err);
     })
   };
 
+  // switch date
   onChange = e => {
     const { dataList} = this.state;
     this.setState({
@@ -72,28 +73,66 @@ export default class Topic extends Component {
     this.getData(dataList[e.detail.value]);
   };
 
-  render () {
-    const { dataList, selectorChecked, item, loading  } = this.state;
+  // scroll-event
+  onScrolltoupper = e => {
+    console.log(e);
+  };
+
+  onScroll = e => {
+    console.log(e);
+  };
+
+  // open detail
+  handleDetail = (item) => {
     console.log(item);
+  };
+
+  render () {
+    const { dataList, selectorChecked, item, loading, category } = this.state;
+    console.log(item);
+    console.log(category);
     return (
       <View className='container'>
         {!loading && JSON.stringify(item) !== "{}" &&
-          <View className='title'>
-            <Image src={item['福利'][0].url} />
-          </View>
-        }
-        <View className='page-section'>
-          <View>
-            <Picker mode='selector' range={dataList} onChange={this.onChange}>
-              <View className='picker'>
-                <View className='header'>
-                  <Text>{selectorChecked}</Text>
-                  <Button type='primary'>切换日期</Button>
-                </View>
+        <ScrollView
+          scrollY
+          scrollWithAnimation
+          scrollTop='0'
+          style='height: 100%'
+          onScrolltoupper={this.onScrolltoupper}
+          onScroll={this.onScroll}
+        >
+            <View className='title'>
+              <Image className='title-img' src={item['福利'][0].url} mode='widthFix' />
+            </View>
+            <View className='page-section'>
+              <View>
+                <Picker mode='selector' range={dataList} onChange={this.onChange}>
+                  <View className='picker'>
+                    <View className='header'>
+                      <Text>{selectorChecked}</Text>
+                      <Button type='primary'>切换日期</Button>
+                    </View>
+                  </View>
+                </Picker>
               </View>
-            </Picker>
-          </View>
-        </View>
+            </View>
+            {category.length && category.map((d, i) =>
+              <View key={i} className='section'>
+                  <View className='section-title'>
+                    {d}
+                  </View>
+                  <View className='section-content'>
+                    {item[d].map(v =>
+                      <View className='section-list' key={v._id} onClick={this.handleDetail.bind(this, v)}>
+                          {v.desc}
+                      </View>
+                    )}
+                  </View>
+              </View>
+            )}
+        </ScrollView>
+        }
       </View>
     )
   }
