@@ -117,7 +117,7 @@ export default class Log extends Component {
               {!loading && dataGroup.map((d, i) => (
                 <View className='item-container' key={i}>
                   <View className='item' onClick={this.handleClick.bind(this, d[0].url)}>
-                    <Image src={d[0].url}  />
+                    <Image src={d[0].url} lazyLoad />
                     <View className='bottom'>
                       <Text className='fl'>{d[0].desc}</Text>
                       <Text className='fr'>via: {d[0].who}</Text>
