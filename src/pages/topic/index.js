@@ -106,23 +106,29 @@ export default class Topic extends Component {
     })
   };
 
+  getMessage = (message, type) => {
+    Taro.atMessage({
+      'message': message,
+      'type': type,
+    })
+  };
+  // fixme taro-ui  AtSwipeAction have a bug
   // open or close button
   onCollection = (item) => {
     const { storageArray } = this.state;
-    Taro.atMessage({
-      'message': '收藏成功',
-      'type': 'success',
-    });
 
     // management data
     if(storageArray.length === 0) {
       storageArray.push(item);
+      this.getMessage('收藏成功', 'success')
     }else {
       for(let i in storageArray) {
         if(storageArray[i]._id === item._id) {
+          this.getMessage('请勿重复收藏', 'error');
           return null
         }else {
-          storageArray.push(item)
+          storageArray.push(item);
+          this.getMessage('收藏成功', 'success')
         }
       }
     }
