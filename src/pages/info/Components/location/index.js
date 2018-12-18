@@ -22,18 +22,14 @@ export default class Location extends Component {
     };
   }
 
-  componentWillMount () { }
-
   componentDidMount () {
     const { qqMapSdk } = this.state;
     let _that = this;
     Taro.getLocation()
       .then(res => {
-        console.log(res);
         qqMapSdk.reverseGeocoder({ // reverse parsing location
           location: {latitude: res.latitude, longitude: res.longitude},
           success: function (response) {
-            console.log(response);
             _that.setState({
               location: response.result.address,
               oldLocaltion: response.result.location
@@ -62,12 +58,6 @@ export default class Location extends Component {
     })
   };
 
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
   onTap = (e) => {
     console.log(e)
   };
@@ -78,7 +68,6 @@ export default class Location extends Component {
 
   render () {
     const {location, oldLocaltion, weather} = this.state;
-    console.log(weather);
     return (
       <View className='content'>
         <View className='title'>
@@ -101,8 +90,8 @@ export default class Location extends Component {
             thumb={WTL}
             isFull
           >
-            {weather.forecast.map((d, i) => {
-              return <AtAccordion
+            {weather.forecast.map((d, i) =>
+              <AtAccordion
                 onClick={this.onClick.bind(this, i)}
                 title={`${d.date.substring(0, 2)}号 ( ${d.date.substring(3)} )`}
                 key={i}
@@ -126,7 +115,7 @@ export default class Location extends Component {
                   />
                 </AtList>
               </AtAccordion>
-            })}
+            )}
           </AtCard> : '正在加载中...'
         }
       </View>

@@ -9,7 +9,7 @@ export default class Log extends Component {
 
   config = {
     navigationBarTitleText: '分类'
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -76,12 +76,6 @@ export default class Log extends Component {
     return data
   };
 
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
   handleClick = (url) => {
     Taro.navigateTo({
       url: `/pages/log/Components/view/index?url=${url}`
@@ -89,7 +83,6 @@ export default class Log extends Component {
   };
 
   onScrollToLower = () => {
-    console.log('滚动到底部了');
     page++;
     this.getData();
   };
@@ -144,7 +137,6 @@ export default class Log extends Component {
             <Hot />
           </View>
         </View>
-
       </View>
     )
   }

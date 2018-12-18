@@ -7,7 +7,7 @@ export default class Info extends Component {
 
   config = {
     navigationBarTitleText: '我的'
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -15,8 +15,6 @@ export default class Info extends Component {
       userInfo : {}
     }
   }
-
-  componentWillMount () { }
 
   componentDidMount () {
     Taro.login().then(res => {
@@ -33,12 +31,6 @@ export default class Info extends Component {
       console.log(err, '1');
     })
   }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
 
   clickUserInfo = () => {
     Taro.getUserInfo().then(response => {
@@ -96,8 +88,6 @@ export default class Info extends Component {
               </View>
             )}
           </View>
-          {/*weather*/}
-
         </View>
     )
   }

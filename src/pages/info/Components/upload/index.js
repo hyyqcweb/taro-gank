@@ -7,7 +7,7 @@ export default class Upload extends Component {
 
   config = {
     navigationBarTitleText: '提交干货'
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -18,8 +18,6 @@ export default class Upload extends Component {
     }
   }
 
-  componentWillMount () { }
-
   componentDidMount () {
     const {userInfo} = this.$router.params;
     if(userInfo) {
@@ -28,12 +26,6 @@ export default class Upload extends Component {
       });
     }
   }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
 
   onChange = e => {
     this.setState({

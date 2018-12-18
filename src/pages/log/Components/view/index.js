@@ -6,7 +6,7 @@ export default class ImageView extends Component {
 
   config = {
     navigationBarTitleText: '图片预览'
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -15,8 +15,6 @@ export default class ImageView extends Component {
     }
   }
 
-  componentWillMount () { }
-
   componentDidMount () {
     const { url } = this.$router.params;
     this.setState({
@@ -24,17 +22,10 @@ export default class ImageView extends Component {
     })
   }
 
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
-
   handleLongPress = (url) => {
     Taro.downloadFile({
       url
     }).then(res => {
-      console.log(res);
       let path = res.tempFilePath;
       Taro.saveImageToPhotosAlbum({
         filePath: path

@@ -17,8 +17,6 @@ export default class Details extends Component {
     }
   }
 
-  componentWillMount () { }
-
   componentDidMount () {
     const {userInfo} = this.$router.params;
     if(userInfo) {
@@ -38,12 +36,6 @@ export default class Details extends Component {
       });
     }
   }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
 
   render () {
     const {userInfo, countries} = this.state;

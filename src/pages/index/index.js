@@ -1,5 +1,5 @@
 import Taro, {Component} from '@tarojs/taro'
-import {View, Swiper, SwiperItem, ScrollView, Video, Text} from '@tarojs/components'
+import {View, Swiper, SwiperItem, ScrollView} from '@tarojs/components'
 import './index.less'
 
 export default class Index extends Component {
@@ -74,7 +74,6 @@ export default class Index extends Component {
 
   render() {
     const { navTab, currentIndex, leftNumber } = this.state;
-
     return (
       <View className='index'>
         <ScrollView

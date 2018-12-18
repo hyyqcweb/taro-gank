@@ -6,7 +6,7 @@ export default class setting extends Component {
 
   config = {
     navigationBarTitleText: '系统信息'
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -27,7 +27,6 @@ export default class setting extends Component {
 
   render () {
     const { item } = this.state;
-    console.log(item);
     return (
       <View className='content'>
         <View className='details'>

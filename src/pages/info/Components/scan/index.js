@@ -5,7 +5,7 @@ export default class ScanQrCode extends Component {
 
   config = {
     navigationBarTitleText: '扫一扫'
-  }
+  };
 
   componentDidMount () {
     this.onScanQrCode()
@@ -22,12 +22,6 @@ export default class ScanQrCode extends Component {
       console.log(err);
     })
   }
-
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
 
   render () {
     return (
