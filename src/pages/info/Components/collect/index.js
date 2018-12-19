@@ -62,9 +62,11 @@ export default class Collect extends Component {
         flexFlow: 'column'
     };
     const list = {
-      fontSize: '26px',
-      lineHeight: '46px',
       color: '#9C978B'
+    };
+    const t = {
+      fontSize: '15px',
+      lineHeight: '30px',
     };
     return (
       <View style={style}>
@@ -80,7 +82,7 @@ export default class Collect extends Component {
               }
             ]}
             >
-              <Text onClick={this.handleDetail.bind(this, d)}>{i + 1}. {d.desc}</Text>
+              <Text style={t} onClick={this.handleDetail.bind(this, d)}>{i + 1}. {d.desc}</Text>
             </AtSwipeAction>
           </View>
         ) : '暂无收藏'}

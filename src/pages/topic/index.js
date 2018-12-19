@@ -170,7 +170,7 @@ export default class Topic extends Component {
                     {d}
                   </View>
                   <View className='section-content'>
-                    {item[d].map(v =>
+                    {item[d].map((v, index) =>
                       <View className='section-list' key={v._id}>
                         <AtSwipeAction onClick={this.onCollection.bind(this, v)} autoClose options={[
                           {
@@ -181,7 +181,7 @@ export default class Topic extends Component {
                           }
                         ]}
                         >
-                          <Text onClick={this.handleDetail.bind(this, v)}>{v.desc}</Text>
+                          <Text onClick={this.handleDetail.bind(this, v)}>{index + 1}. {v.desc}</Text>
                         </AtSwipeAction>
                       </View>
                     )}
