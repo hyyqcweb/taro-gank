@@ -1,6 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
 import Index from './pages/index'
-
 import './app.less'
 
 class App extends Component {
@@ -33,7 +32,7 @@ class App extends Component {
     "tabBar": {
       "backgroundColor": "#fafafa",
       "borderStyle": "white",
-      "selectedColor": "#b4282d", //#b4282d
+      "selectedColor": "#b4282d",
       "color": "#666",
       "list": [
         {
@@ -62,15 +61,7 @@ class App extends Component {
         }
       ]
     }
-  }
-
-  componentDidMount () {}
-
-  componentDidShow () {}
-
-  componentDidHide () {}
-
-  componentCatchError () {}
+  };
 
   render () {
     return (
@@ -79,4 +70,4 @@ class App extends Component {
   }
 }
 
-Taro.render(<App />, document.getElementById('app'))
+Taro.render(<App />, document.getElementById('app'));
