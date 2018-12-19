@@ -83,8 +83,13 @@ export default class Log extends Component {
   };
 
   onScrollToLower = () => {
-    page++;
-    this.getData();
+    if(page === 7) {
+      Taro.showToast({ title: '我也是有底线的' });
+    }else {
+      page++;
+      this.getData();
+    }
+
   };
 
   onClick(index) {
@@ -126,7 +131,7 @@ export default class Log extends Component {
                 </View>
               ))}
               <View className='load-more-container'>
-                <Text className='load-more-tips'>加载更多数据...</Text>
+                {page === 7 ? <Text className='load-more-tips'>没有更多数据了...</Text> : <Text className='load-more-tips'>加载更多数据...</Text>}
               </View>
             </ScrollView>
           </View>
