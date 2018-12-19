@@ -83,7 +83,7 @@ export default class Topic extends Component {
 
   // switch date
   onChange = e => {
-    const { dataList} = this.state;
+    const { dataList} = this.state; // slice dataList before 74 a data, because some of the images don't show
     this.setState({
       selectorChecked: dataList[e.detail.value]
     });
@@ -154,7 +154,7 @@ export default class Topic extends Component {
             </View>
             <View className='page-section'>
               <View>
-                <Picker mode='selector' range={dataList} onChange={this.onChange}>
+                <Picker mode='selector' range={dataList.slice(0, 74)} onChange={this.onChange}>
                   <View className='picker'>
                     <View className='header'>
                       <Text>{selectorChecked}</Text>
