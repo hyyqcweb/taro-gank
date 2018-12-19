@@ -37,6 +37,12 @@ export default class Details extends Component {
     }
   }
 
+  handleUpload = (url) => {
+    Taro.navigateTo({
+      url: `/pages/info/Components/imageUpload/index?url=${url}`
+    })
+  };
+
   render () {
     const {userInfo, countries} = this.state;
     let province, city = '';
@@ -52,7 +58,7 @@ export default class Details extends Component {
               <Text>头像</Text>
             </View>
             <View className='item-icon'>
-              <Image class='item-img' src={userInfo.avatarUrl} />
+              <Image class='item-img' src={userInfo.avatarUrl} onClick={this.handleUpload.bind(this, userInfo.avatarUrl)} />
             </View>
           </View>
           <View className='warp-flex title'>
