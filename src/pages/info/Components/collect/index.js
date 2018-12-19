@@ -80,7 +80,7 @@ export default class Collect extends Component {
               }
             ]}
             >
-              <Text onClick={this.handleDetail.bind(this, d)}>{d.desc}</Text>
+              <Text onClick={this.handleDetail.bind(this, d)}>{i + 1}. {d.desc}</Text>
             </AtSwipeAction>
           </View>
         ) : '暂无收藏'}
