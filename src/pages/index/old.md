@@ -1,3 +1,7 @@
+## old version
+
+```bash
+
 import Taro, {Component} from '@tarojs/taro'
 import {View, Swiper, SwiperItem, ScrollView} from '@tarojs/components'
 import './index.less'
@@ -12,29 +16,41 @@ export default class Index extends Component {
     super(props);
     this.state = {
       loading: true,
-      navTab: ['Android', 'iOS', '前端'],
+      navTab: [],
       currentIndex: 0,
+      leftNumber: 0,
     }
   }
 
   componentDidMount() {
-    const { navTab } = this.state;
-    this.getData(navTab[0]);
+    this.getRestData();
   }
 
-  getData(value) {
+  getRestData() {
+    Taro.showLoading({title: '加载中'});
     Taro.request({
-      url: `http://gank.io/api/data/${value}/10/1`,
+      url: `https://api.apiopen.top/videoCategory`,
       header: {
         'Content-Type': 'application/json'
       }
     }).then(res => {
-      console.log(res);
+      Taro.hideLoading();
+      const {itemList} = res.data.result;
+      this.getPushArray(itemList);
     }).catch(err => {
       console.log(err);
     })
   }
 
+  getPushArray(item) {
+    let array = [];
+    item.map(d => {
+      array.push(d.data);
+    });
+    this.setState({
+      navTab: array
+    });
+  }
 
   onClick = (id, index) => {
     this.setState({
@@ -52,12 +68,16 @@ export default class Index extends Component {
 
   handleChange = (e) => {
     this.setState({
-      currentIndex: e.detail.current
+      leftNumber: e.detail.current * 75
     });
+
+    this.setState({
+      currentIndex: e.detail.current
+    })
   };
 
   render() {
-    const { navTab, currentIndex } = this.state;
+    const { navTab, currentIndex, leftNumber } = this.state;
     return (
       <View className='index'>
         <ScrollView
@@ -67,11 +87,12 @@ export default class Index extends Component {
           onScrollToLower={this.handleRight}
           lowerThreshold='20'
           upperThreshold='20'
+          scrollLeft={leftNumber}
         >
           <View className='title'>
             {navTab.map((d, i) =>
               <View className={currentIndex === i ? 'flex-item active' : 'flex-item'} key={d.id} onClick={this.onClick.bind(this, d.id, i)}>
-                {d}
+                {d.title.substring(1)}
               </View>
             )}
           </View>
@@ -98,4 +119,4 @@ export default class Index extends Component {
     )
   }
 }
-
+```
