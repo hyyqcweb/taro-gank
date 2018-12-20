@@ -55,7 +55,6 @@ export default class Collect extends Component {
 
   render () {
     let {storageArray} = this.state;
-
     const style = {
         marginTop: '5px',
         display: 'flex',
