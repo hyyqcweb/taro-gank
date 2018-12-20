@@ -17,6 +17,37 @@ This is a little exercise program
 ## 🔨 Preview 
 ```bash
   yarn dev:weapp || npm run dev:weapp  // only the small program was tested
+  open weChat web development tool 
+  click new project
+  import taro-gank dist folder and write appid
+```
+
+## 💦 Directory
+```bash
+\---src
+    +---pages
+    |   +---detail
+    |   +---index   
+    |   +---info
+    |   |   \---Components
+    |   |       +---collect
+    |   |       +---details
+    |   |       +---exceptional
+    |   |       +---imageUpload
+    |   |       +---location
+    |   |       +---scan
+    |   |       +---setting
+    |   |       +---tool
+    |   |       |   \---phone
+    |   |       +---upload
+    |   +---log
+    |   |   \---Components
+    |   |       \---view
+    |   +---topic
+    +---static
+    |   +---images
+    |   +---info
+    +---utils
 ```
 
 ## 🔥 Contact
