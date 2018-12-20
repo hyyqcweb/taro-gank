@@ -62,9 +62,8 @@ export default class Topic extends Component {
   // get content data
   getData = (value) => {
     Taro.showLoading({ title: '加载中' });
-    console.log(value.split("-").join("\/"));  // string to array to string
     Taro.request({
-      url: `https://gank.io/api/day/${value.split("-").join("\/")}`,
+      url: `https://gank.io/api/day/${value.split("-").join("\/")}`,   // string to array to string
       header: {
         'Content-Type': 'application/json'
       }
