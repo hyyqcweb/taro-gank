@@ -57,10 +57,6 @@ export default class Index extends Component {
     })
   };
 
-  handleToTop = (e) => {
-    console.log(e);
-  };
-
   handleToBottom = () => {
     const { currentIndex, navTab } = this.state;
     page++;
@@ -110,11 +106,9 @@ export default class Index extends Component {
                     className='scroll-view'
                     scrollY
                     scrollWithAnimation
-                    scrollTop='0'
                     enableBackToTop
                     lowerThreshold='20'
                     upperThreshold='20'
-                    onScrollToUpper={this.handleToTop.bind(this)}
                     onScrollToLower={this.handleToBottom.bind(this)}
                   >
                     {!loading && List.map((t, r) => {
