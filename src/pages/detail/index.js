@@ -23,7 +23,6 @@ export default class Topic extends Component {
     })
   }
 
-
   render () {
     const { propsItem } = this.state;
     return (

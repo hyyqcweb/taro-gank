@@ -1,6 +1,7 @@
 import Taro, {Component} from '@tarojs/taro'
 import {View, Swiper, SwiperItem, ScrollView, Text} from '@tarojs/components'
 import './index.less'
+import '../../app.less'
 
 let page = 1;
 export default class Index extends Component {

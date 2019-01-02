@@ -1,6 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image, ScrollView } from '@tarojs/components'
 import './style.less'
+import '../../app.less'
 import Rvideo from './Video'
 import Hot from './Hot'
 
@@ -20,8 +21,6 @@ export default class Log extends Component {
       currentIndex: 0,
     }
   }
-
-  componentWillMount () { }
 
   componentDidMount () {
      this.getData()
