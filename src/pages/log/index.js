@@ -35,8 +35,6 @@ export default class Log extends Component {
       if(!data.error) {
         this.convertData(data.results);
       }
-    }).catch(err => {
-      console.log(err);
     })
   };
 

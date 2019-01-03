@@ -50,8 +50,6 @@ export default class Topic extends Component {
           selectorChecked: data.results[0]
         });
         this.getData(data.results[0]);
-    }).catch(err => {
-      console.log(err);
     })
   }
 
@@ -66,8 +64,6 @@ export default class Topic extends Component {
         loading: false,
         category: data.category
       })
-    }).catch(err => {
-      console.log(err);
     })
   };
 
