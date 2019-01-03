@@ -9,7 +9,9 @@ export default class Topic extends Component {
   };
 
   componentDidMount () {
-    console.log(this.$router.params)
+    const { data } = JSON.parse(this.$router.params.err);
+
+    console.log(data)
   }
 
   handleClick = () => {
