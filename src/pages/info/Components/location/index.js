@@ -93,7 +93,7 @@ export default class Location extends Component {
             {weather.forecast.map((d, i) =>
               <AtAccordion
                 onClick={this.onClick.bind(this, i)}
-                title={`${d.date.substring(0, 2)}号 ( ${d.date.substring(3)} )`}
+                title={`${d.date.substring(0, d.date.length -4)}号 ( ${d.date.substring(d.date.length -3)} )`}
                 key={i}
               >
                 <AtList hasBorder={false}>
