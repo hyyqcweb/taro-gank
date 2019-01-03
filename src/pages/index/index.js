@@ -63,7 +63,6 @@ export default class Index extends Component {
     this.setState({
       currentIndex: e.detail.current
     });
-    console.log(e);
     this.getData(navTab[e.detail.current]);
   };
 
@@ -75,7 +74,6 @@ export default class Index extends Component {
 
   render() {
     const { navTab, currentIndex, List, loading } = this.state;
-    console.log('List', List);
     return (
       <View className='index'>
         <View className='title'>
