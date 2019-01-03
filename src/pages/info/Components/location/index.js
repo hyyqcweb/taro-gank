@@ -1,7 +1,7 @@
 import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Map } from '@tarojs/components'
-import './style.less'
 import { AtCard, AtAccordion, AtList, AtListItem  } from "taro-ui"
+import './style.less'
 import QQMapWX from '../../../../utils/qqmap-wx-jssdk'
 import WTL from '../../../../static/wtl.png'
 

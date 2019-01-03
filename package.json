@@ -15,7 +15,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "eslint src/**/*.js"
+      "pre-commit": "eslint src/pages/**/*.js"
     }
   },
   "author": "",

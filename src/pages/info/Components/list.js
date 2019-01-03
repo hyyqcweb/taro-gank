@@ -1,4 +1,4 @@
-import { starPng, livePng, locationPng, scanPng, recentPng, eyePng, excepPng } from '../../../static/info'
+import { starPng, livePng, locationPng, recentPng, eyePng, excepPng } from '../../../static/info'
 
 const list = [
   {img: starPng, name: '我的收藏', hash: 'collect'},

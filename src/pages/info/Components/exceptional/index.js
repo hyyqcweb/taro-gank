@@ -1,5 +1,5 @@
 import Taro, { Component } from '@tarojs/taro'
-import { View, Image, Text } from '@tarojs/components'
+import { View, Image } from '@tarojs/components'
 import weChatQrCode from '../../../../static/info/weChat-qrcode.jpg'
 import '../../../log/Components/view/style.less'
 
