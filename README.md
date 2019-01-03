@@ -27,6 +27,7 @@ This is a little exercise program
 \---src
     +---pages
     |   +---detail
+    |   +---error
     |   +---index   
     |   +---info
     |   |   \---Components
