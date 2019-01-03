@@ -66,12 +66,12 @@ const getRegion = (str) => {
     { name: "新疆", cities: ["乌鲁木齐", "哈密", "喀什", "巴音郭楞", "昌吉", "伊犁", "阿勒泰", "克拉玛依", "博尔塔拉"] },
     { name: "香港", cities: ["中西区", "湾仔区", "东区", "南区", "九龙-油尖旺区", "九龙-深水埗区", "九龙-九龙城区", "九龙-黄大仙区", "九龙-观塘区", "新界-北区", "新界-大埔区", "新界-沙田区", "新界-西贡区", "新界-荃湾区", "新界-屯门区", "新界-元朗区", "新界-葵青区", "新界-离岛区"] },
     { name: "澳门", cities: ["花地玛堂区", "圣安多尼堂区", "大堂区", "望德堂区", "风顺堂区", "嘉模堂区", "圣方济各堂区", "路氹城"] }];
-  for (var i = 0; i < province.length; i++)
+  for (let i = 0; i < province.length; i++)
   {
     if (str === province[i].name) {
       return province2[i].name;
     }
-    for (var u=0; u < province[i].cities.length; u++)
+    for (let u=0; u < province[i].cities.length; u++)
     {
       if (str === province[i].cities[u])
       {

@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Picker, Button, Image, ScrollView } from '@tarojs/components'
 import { AtSwipeAction, AtMessage } from "taro-ui"
 import './style.less'
+import Api from '../../utils/api'
 
 export default class Topic extends Component {
 
@@ -42,32 +43,22 @@ export default class Topic extends Component {
 
   // get history data
   getHistory() {
-    Taro.request({
-      url: 'http://gank.io/api/day/history',
-      header: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => {
-      const {data} = res;
-      this.setState({
-        dataList: data.results,
-        selectorChecked: data.results[0]
-      });
-      this.getData(data.results[0]);
+    Api.request({url:'day/history'}).then(res => {
+        const {data} = res;
+        this.setState({
+          dataList: data.results,
+          selectorChecked: data.results[0]
+        });
+        this.getData(data.results[0]);
     }).catch(err => {
-      console.log(err)
+      console.log(err);
     })
   }
 
   // get content data
   getData = (value) => {
     Taro.showLoading({ title: '加载中' });
-    Taro.request({
-      url: `https://gank.io/api/day/${value.split("-").join("\/")}`,   // string to array to string
-      header: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => {
+    Api.request({url: `day/${value.split("-").join("\/")}`}).then(res => {  // string to array to string
       const { data } = res;
       Taro.hideLoading();
       this.setState({
@@ -89,15 +80,6 @@ export default class Topic extends Component {
     this.getData(dataList[e.detail.value]);
   };
 
-  // scroll-event
-  onScrolltoupper = e => {
-    console.log(e);
-  };
-
-  onScroll = e => {
-    console.log(e);
-  };
-
   // open detail
   handleDetail = (item) => {
     Taro.navigateTo({
@@ -115,7 +97,6 @@ export default class Topic extends Component {
   // open or close button
   onCollection = (item) => {
     const { storageArray } = this.state;
-
     // management data
     if(storageArray.length === 0) {
       storageArray.push(item);
@@ -145,8 +126,6 @@ export default class Topic extends Component {
           scrollWithAnimation
           scrollTop='0'
           style='height: 100%'
-          onScrolltoupper={this.onScrolltoupper}
-          onScroll={this.onScroll}
         >
             <View className='title'>
               <Image className='title-img' src={item['福利'][0].url} mode='widthFix' />

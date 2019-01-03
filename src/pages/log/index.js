@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Image, ScrollView } from '@tarojs/components'
 import './style.less'
 import '../../app.less'
+import Api from '../../utils/api'
 import Rvideo from './Video'
 import Hot from './Hot'
 
@@ -28,12 +29,7 @@ export default class Log extends Component {
 
   getData = () => {
     Taro.showLoading({ title: '加载中' });
-    Taro.request({
-      url: `http://gank.io/api/data/福利/10/${page}`,
-      header: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => {
+    Api.request({url:`data/福利/10/${page}`}).then(res => {
       const {data} = res;
       Taro.hideLoading();
       if(!data.error) {

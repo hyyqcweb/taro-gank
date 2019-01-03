@@ -7,7 +7,7 @@ export default class Details extends Component {
 
   config = {
     navigationBarTitleText: '个人信息'
-  }
+  };
 
   constructor(props) {
     super(props);

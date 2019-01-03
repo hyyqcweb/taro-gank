@@ -2,6 +2,7 @@ import Taro, {Component} from '@tarojs/taro'
 import {View, Swiper, SwiperItem, ScrollView, Text} from '@tarojs/components'
 import './index.less'
 import '../../app.less'
+import Api from '../../utils/api'
 
 let page = 1;
 export default class Index extends Component {
@@ -27,12 +28,7 @@ export default class Index extends Component {
 
   getData(value, index) {
     Taro.showLoading({ title: '加载中' });
-    Taro.request({
-      url: `http://gank.io/api/data/${value}/10/${page}`,
-      header: {
-        'Content-Type': 'application/json'
-      }
-    }).then(res => {
+    Api.request({url:`data/${value}/10/${page}`}).then(res => {
       const { data } = res;
       Taro.hideLoading();
       if(index === undefined) {

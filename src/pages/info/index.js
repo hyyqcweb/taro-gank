@@ -81,14 +81,14 @@ export default class Info extends Component {
               <View className='warp-flex udl' onClick={this.handleClick.bind(this, d.hash)}>
                 <View className='fl'>
                   <View className='item-icon'>
-                    <Image class='item-img' src={d.img}/>
+                    <Image class='item-img' src={d.img} />
                   </View>
                   <View className='item-name'>
                     <Text>{d.name}</Text>
                   </View>
                 </View>
                 <View className='fr'>
-                  <AtIcon value='chevron-right' size='20'/>
+                  <AtIcon value='chevron-right' size='20' />
                 </View>
               </View>
             </View>

@@ -2,6 +2,7 @@ import Taro, { Component } from '@tarojs/taro'
 import { View, Text, Input, Picker, Button, Form } from '@tarojs/components'
 import './style.less'
 import onJudge from './Judge'
+import Api from '../../../../utils/api'
 
 export default class Upload extends Component {
 
@@ -53,14 +54,12 @@ export default class Upload extends Component {
       this.show('url 地址必填');
       return false;
     }else {
-      Taro.request({
-        url: 'https://gank.io/api/add2gank',
-        method: 'POST',
-        data: {"desc":desc,"who":who, "url":url, "type":onJudge(type), "debug": true},
-        header: {
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }).then(res => {
+      Api.request({
+          url:'add2gank',
+          method: 'POST',
+          header: {'Content-Type': 'application/x-www-form-urlencoded'},
+          data: {"desc":desc,"who":who, "url":url, "type":onJudge(type), "debug": true},
+      },true).then(res => {
         const {data} = res;
         Taro.showModal({
           title: '提示',
@@ -74,7 +73,6 @@ export default class Upload extends Component {
             }
           }
         });
-
       }).catch(err => {
         console.log(err);
       })
