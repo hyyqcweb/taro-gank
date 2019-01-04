@@ -2,7 +2,9 @@
 
 This is a little exercise program
 
-**Special thanks to [Gank.io]** provided by the API
+**Special thanks to [Gank.io](https://gank.io/api)** provided by the API
+
+English | [简体中文](./README-zh_CN.md)
 
 ## 🍦 Technology Stack
 > React + taro + taro-ui 
