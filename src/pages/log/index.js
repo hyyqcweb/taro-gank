@@ -5,6 +5,8 @@ import '../../app.less'
 import Api from '../../utils/api'
 import Rvideo from './Video'
 import Hot from './Hot'
+import Footer from '../Footer'
+import Title from "../Title";
 
 let page = 1;
 export default class Log extends Component {
@@ -95,13 +97,7 @@ export default class Log extends Component {
     const { dataGroup, loading, navTab, currentIndex } = this.state;
     return (
       <View className='log'>
-        <View className='title'>
-          {navTab.map((d, i) =>
-            <View className={currentIndex === i ? 'flex-item active' : 'flex-item'} key={i} onClick={this.onClick.bind(this, i)}>
-              {d}
-            </View>
-          )}
-        </View>
+        <Title currentIndex={currentIndex} navTab={navTab} onClick={this.onClick.bind(this)} />
         <View className='content'>
           <View className='sister' hidden={currentIndex !== 0}>
             <ScrollView scrollY style='height:1000px;' onScrollToLower={this.onScrollToLower.bind(this)} lowerThreshold='20' enableBackToTop>
@@ -123,9 +119,7 @@ export default class Log extends Component {
                   </View>
                 </View>
               ))}
-              <View className='load-more-container'>
-                {page === 7 ? <Text className='load-more-tips'>没有更多数据了...</Text> : <Text className='load-more-tips'>加载更多数据...</Text>}
-              </View>
+              <Footer page={page} />
             </ScrollView>
           </View>
           <View className='rest' hidden={currentIndex !== 1}>

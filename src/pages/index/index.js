@@ -3,6 +3,8 @@ import {View, Swiper, SwiperItem, ScrollView, Text} from '@tarojs/components'
 import './index.less'
 import '../../app.less'
 import Api from '../../utils/api'
+import Title from '../Title'
+import Footer from '../Footer'
 
 let page = 1;
 export default class Index extends Component {
@@ -76,13 +78,7 @@ export default class Index extends Component {
     const { navTab, currentIndex, List, loading } = this.state;
     return (
       <View className='index'>
-        <View className='title'>
-          {navTab.map((d, i) =>
-            <View className={currentIndex === i ? 'flex-item active' : 'flex-item'} key={d.id} onClick={this.onClick.bind(this, i)}>
-              {d}
-            </View>
-          )}
-        </View>
+        <Title currentIndex={currentIndex} navTab={navTab} onClick={this.onClick.bind(this)} />
         <View className='content'>
           <Swiper
             className='test-h'
@@ -119,9 +115,7 @@ export default class Index extends Component {
                         </View>
                       </View>
                     })}
-                    <View className='load-more-container'>
-                      <Text className='load-more-tips'>加载更多数据...</Text>
-                    </View>
+                    <Footer />
                   </ScrollView>
                 </View>
               </SwiperItem>
