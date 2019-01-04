@@ -1,4 +1,4 @@
-## must read before use 🔍
+## 🔍 must read before use 
 
 This is a little exercise program
 
@@ -7,7 +7,7 @@ This is a little exercise program
 English | [简体中文](./README-zh_CN.md)
 
 ## 🍦 Technology Stack
-> React + taro + taro-ui 
+> React + taro + taro-ui + es6
 
 ## 📦 Development
 ```bash
