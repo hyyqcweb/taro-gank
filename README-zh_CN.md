@@ -9,6 +9,13 @@
 ## 🍦 技术栈
 > React + taro + taro-ui + es6 
 
+## 💡 GIF 预览
+
+![index](https://note.youdao.com/yws/res/5725/WEBRESOURCEa0057e46c632a735ce0f4c8d7826d671)
+![topic](https://note.youdao.com/yws/res/5731/WEBRESOURCE8ffadcd34e95ba90293fe81c84131b99)
+![log](https://note.youdao.com/yws/res/5729/WEBRESOURCE87c59bb98fd26bd22b26c19f2cae65e8)
+![info](https://note.youdao.com/yws/res/5727/WEBRESOURCE37b48a56e7f567e4477a36007ab9de82)
+
 ## 📦 安装
 ```bash
   git clone https://github.com/hyyqcweb/taro-gank.git
