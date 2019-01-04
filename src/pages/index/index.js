@@ -1,5 +1,5 @@
 import Taro, {Component} from '@tarojs/taro'
-import {View, Swiper, SwiperItem, ScrollView, Text} from '@tarojs/components'
+import {View, Swiper, SwiperItem, ScrollView} from '@tarojs/components'
 import './index.less'
 import '../../app.less'
 import Api from '../../utils/api'
