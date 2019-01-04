@@ -3,6 +3,7 @@ import { View, Text, Picker, Button, Image, ScrollView } from '@tarojs/component
 import { AtSwipeAction, AtMessage } from "taro-ui"
 import './style.less'
 import Api from '../../utils/api'
+import Unique from '../../utils/unique'
 
 export default class Topic extends Component {
 
@@ -89,7 +90,6 @@ export default class Topic extends Component {
       'type': type,
     })
   };
-  // fixme taro-ui  AtSwipeAction have a bug
   // open or close button
   onCollection = (item) => {
     const { storageArray } = this.state;
@@ -98,17 +98,17 @@ export default class Topic extends Component {
       storageArray.push(item);
       this.getMessage('收藏成功', 'success')
     }else {
-      for(let i in storageArray) {
-        if(storageArray[i]._id === item._id) {
+      storageArray.map(d => {
+        if(d._id === item._id) {
           this.getMessage('请勿重复收藏', 'error');
-          return null
+          return false
         }else {
           storageArray.push(item);
           this.getMessage('收藏成功', 'success')
         }
-      }
+      })
     }
-    Taro.setStorageSync('collect', JSON.stringify(storageArray));
+    Taro.setStorageSync('collect', JSON.stringify(Unique(storageArray)));
   };
 
   render () {
