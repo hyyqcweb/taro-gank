@@ -85,7 +85,7 @@ export default class Index extends Component {
             circular
             indicatorDots={false}
             current={currentIndex}
-            onChange={this.handleChange.bind(this)}
+            onChange={this.handleChange}
           >
             {navTab.map((d, i) => (
               <SwiperItem key={i}>
