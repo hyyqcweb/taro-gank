@@ -35,13 +35,9 @@ English | [简体中文](./README-zh_CN.md)
     |   |   \---Components
     |   |       +---collect
     |   |       +---details
-    |   |       +---exceptional
     |   |       +---imageUpload
     |   |       +---location
-    |   |       +---scan
     |   |       +---setting
-    |   |       +---tool
-    |   |       |   \---phone
     |   |       +---upload
     |   +---log
     |   |   \---Components

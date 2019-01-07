@@ -28,29 +28,25 @@
 ```bash
 \---src
     +---pages
-    |   +---detail // 详情页
-    |   +---error // 错误页
-    |   +---index // 首页 
-    |   +---info // 我的
+    |   +---detail
+    |   +---error
+    |   +---index   
+    |   +---info
     |   |   \---Components
-    |   |       +---collect // 收藏
-    |   |       +---details // 个人信息
-    |   |       +---exceptional // 打赏
-    |   |       +---imageUpload // 图片上传(没有服务器支持)
-    |   |       +---location // 定位
-    |   |       +---scan // 扫码
-    |   |       +---setting // 设置
-    |   |       +---tool // 工具
-    |   |       |   \---phone // 手机号查询
-    |   |       +---upload // 提交
-    |   +---log // 分类
+    |   |       +---collect
+    |   |       +---details
+    |   |       +---imageUpload
+    |   |       +---location
+    |   |       +---setting
+    |   |       +---upload
+    |   +---log
     |   |   \---Components
     |   |       \---view
-    |   +---topic // 推荐
-    +---static // 静态资源
+    |   +---topic
+    +---static
     |   +---images
     |   +---info
-    +---utils // 工具类
+    +---utils
 ```
 
 ## 🔥 如何联系
