@@ -58,9 +58,7 @@ English | [简体中文](./README-zh_CN.md)
   junjie_hyyqc@163.com // please indicate your intention
 ```
 
-## 🍔 Donation
-
-[Donation](./README-wechat.md)
+## 🍔 [Donation](./README-wechat.md)
 
 ## 🌍 License
 

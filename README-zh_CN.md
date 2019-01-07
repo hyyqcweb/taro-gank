@@ -58,9 +58,7 @@
   junjie_hyyqc@163.com // 请注明您的来意
 ```
 
-## 🍔 Donation
-
-[捐赠](./README-wechat.md)
+## 🍔 [捐赠](./README-wechat.md)
 
 ## 🌍 License
 
