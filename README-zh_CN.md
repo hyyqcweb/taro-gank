@@ -6,6 +6,10 @@
 
 [English](./README.md) | 简体中文
 
+## 💡 GIF 预览
+
+[GIF 预览](./README-figure_bed.md)
+
 ## 🍦 技术栈
 > React + taro + taro-ui + es6 
 
@@ -53,6 +57,10 @@
 ```bash
   junjie_hyyqc@163.com // 请注明您的来意
 ```
+
+## 🍔 Donation
+
+![微信](https://upload-images.jianshu.io/upload_images/13638489-006ec610a2a8d31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/612/format/webp)
 
 ## 🌍 License
 
