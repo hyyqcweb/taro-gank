@@ -6,9 +6,7 @@ This is a little exercise program
 
 English | [简体中文](./README-zh_CN.md)
 
-## 💡 GIF preview
-
-[GIF preview](./README-figure_bed.md)
+## 💡 [GIF preview](./README-figure_bed.md)
 
 ## 🍦 Technology Stack
 > React + taro + taro-ui + es6
@@ -52,6 +50,22 @@ English | [简体中文](./README-zh_CN.md)
     |   +---info
     +---utils
 ```
+
+## 📑 Features
+
+✔ Navigation content **linkage**
+
+✔ Use ```localStorage``` **Collection, delete, de-weight**
+
+✔ Nativity ```request```, use ```promise``` Encapsulation
+
+✔ Tencent Map SDK use
+
+✔ National city **pinyin Conversion Chinese**
+
+✔ Complex data structure transformation
+
+✔ Long press image save
 
 ## 🔥 Contact
 ```bash

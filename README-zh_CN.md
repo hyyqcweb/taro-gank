@@ -6,9 +6,7 @@
 
 [English](./README.md) | 简体中文
 
-## 💡 GIF 预览
-
-[GIF 预览](./README-figure_bed.md)
+## 💡 [GIF 预览](./README-figure_bed.md)
 
 ## 🍦 技术栈
 > React + taro + taro-ui + es6 
@@ -52,6 +50,22 @@
     |   +---info
     +---utils
 ```
+
+## 📑 特性
+
+✔ 导航内容**双联动**
+
+✔ 利用 ```localStorage``` 进行**收藏, 删除, 去重**
+
+✔ 原生 ```request``` 请求, 进行```promise```封装
+
+✔ 腾讯地图SDK接入
+
+✔ 全国城市 **拼音转汉字**
+
+✔ 复杂数据结构转换
+
+✔ 长按图片保存
 
 ## 🔥 如何联系
 ```bash
