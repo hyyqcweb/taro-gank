@@ -1,1 +1,1 @@
-![wechat](https://upload-images.jianshu.io/upload_images/13638489-006ec610a2a8d31d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/612/format/webp)
+<img src="../static/wechat-pay.jpg" width="200px" /> <img src="../static/alipay.jpg" width="200px" />
